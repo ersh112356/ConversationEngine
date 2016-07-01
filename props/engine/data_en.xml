@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <!-- Greeting level- starting point. No max visited limitation. -->
+    <!-- The client puts in his first sentence. -->
+    <State id="0" label="welcome" tags="welcome hello hi howdy what's up how doing dude bro name">
+        <!-- general greeting -->
+        <message>Hello</message>
+        <message>Howdy!</message>
+        <message>Hey! Good to see you!</message>
+        <!-- status -->
+        <message>How are you?</message>
+        <message>How're you doing?</message>
+        <message>What's up?</message>
+        <message>Are you good?</message>
+        <message>Dude, what's up?</message>
+        <message>What do you fan doing today?</message>
+        <!-- name -->
+        <message>My name is HowdyDudi, what is your name?</message>
+        <message>My name is HowdyDudi, who is this?</message>
+        <message>I'm HowdyDudi, what is your name?</message>
+        <message>I'm HowdyDudi, who is this?</message>
+        <message>What's up, what's your name?</message>
+        <message>What's up bro, what's your name?</message>
+        <message>What's up man, what's your name?</message>
+        <message>Hi mate, what's your name?</message>
+        <!-- questions -->
+        <message>okay what do you want to talk about?</message>
+        <message>What can I help you with?</message>
+        <message>What do you do for living?</message>
+        <!-- location -->
+        <message>Where are you from?</message>
+        <message>Dude, where are you from?</message>
+        <message>Hello dude, where are you from?</message>
+        <keywords>
+            <!-- general greeting reply -->
+            <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="2" variable="general" payload="2" group="1">((?i)(What's|what is) up)</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="3">Hey there,Hi there,Hi,Hello there,Hello,Nice to meet you</keyword>
+            <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="4" variable="general" payload="2" group="1">((?i)(I'm|I am) (fine|OK) (thank you )*(How are|how're) you)</keyword>
+            <!--  -->
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="4">I'm very well,fine thanks,OK thanks,great</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="4">I'm good,I'm well</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="4">not bad,not so bad,not too bad,can't complain</keyword>
+        </keywords>
+    </State>
+
+    <!-- default state- start over again -->
+    <State id="1" label="greeting" tags="what can I do for you welcome hello hi howdy what's up how doing dude name">
+            <message>What else?</message>
+            <message>Tell me more...</message>
+            <message>Tell me about it</message>
+            <message>What is it that you really want to know?</message>
+            <message>I don’t know how to pick this up</message>
+            <message>What are you saying?</message>
+            <message>Are you kidding me? tell me more</message>
+            <message>Fingers crossed, tell me more</message>
+            <message>Come on then, you need to tell me more...</message>
+            <message>I try not to thing about that</message>
+            <keywords>
+                <!-- general greeting reply -->
+                <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="2" variable="general" payload="2" group="1">((?i)(What's|what is) up)</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="3">Hey there,Hi there,Hi,Hello there,Hello,Nice to meet you</keyword>
+                <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="4" variable="general" payload="2" group="1">((?i)(I'm|I am) (fine|OK) (thank you )*(How are|how're) you)</keyword>
+                <!-- general moving on -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="6">Let's move on,Let's continue</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="6">We need to move on,we better continue,got nothing else to say</keyword>
+                <!-- status reply -->
+                <!-- status reply, mood- positive -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="4">I'm very well,fine thanks,OK thanks,great</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="4">I'm good,I'm well</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="4">not bad,not so bad,not too bad,can't complain</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="35">I wish I could,I wish I had</keyword>
+                <!--  -->
+                <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="2" variable="general" payload="2" group="1">(((?i)what) (do you (want|wish) me )*to tell)</keyword>
+            </keywords>
+    </State>
+    
+    <!-- handles greeting messages + formal welcoming -->
+    <State id="2" label="greeting" tags="welcome hello hi howdy hey what's up what is how doing dude name how are nice to meet you">
+            <message>What do you want to talk about?</message>
+            <message>Doing good, how can I help you with?</message>
+            <message>Dude, tell me more...</message>
+            <message>What're we going to talk about?</message>
+            <message>What is it that you really want to know?</message>
+            <message>Are you kidding me? tell me more</message>>
+            <message>Come on then, you need to tell me more...</message>
+            <message>Hey! Good to see you</message>
+            <!--  -->
+            <message>Great! You?</message>
+            <message>Great! and yourself?</message>
+            <!-- Crazy Ivon -->
+            <message>Great! I am chatting with my friends on the internet.</message>
+            <message>Great! The price of everything is going up.</message>
+            <keywords>
+                <!-- general moving on -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="20">Let's move on,Let's continue</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="20">Yes we need to move on,we better continue,got nothing else to say</keyword>
+                <!--  -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="21">I am very well</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="21">I'm very well,fine thanks,OK thanks</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="21">I'm good,I am good,I'm well,I am well</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="21">not bad,not so bad,not too bad,can't complain</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="6">talk</keyword>
+            </keywords>
+    </State>
+    
+    <!--  handles general greeting messages -->
+    <State id="3" label="greeting" maxvisited="5" tags="hi hello howdy greeting cheers nice to meet you">
+        <message>Nice to meet you too</message>
+        <message>It's always pleasure to see you</message>
+        <message>It has been a long time</message>
+        <message>It has been ages</message>
+        <!--  -->
+        <message>How long has it been?</message>
+        <message>Where have you been hiding?</message>
+        <message>What have you been up to all that time?</message>
+        <message>What's new?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="20">not much,nothing to tell about,not really to tell about</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="20">me too,myself too</keyword>
+			<keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!--  handles greeting messages + taking an interest -->
+    <State id="4" label="greeting" maxvisited="5" tags="fine I am I'm well good bad complain">
+        <message>Doing good, thank you</message>
+        <message>Doing great, thank you</message>
+        <message>Not so bad</message>
+        <message>Not too bad</message>
+        <message>Great!</message>
+        <message>I'm okay</message>
+        <message>I'm OK</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- intent -->
+    <State id="5" label="greeting" maxvisited="5" tags="buy purchase acquire">
+        <message>How much do you want to pay?</message>
+        <message>Why do you want it?</message>
+        <message>Tell me more...</message>
+        <message>I will tell Santa you want it?</message>
+        <message>Interesting. I want to find out more about you</message>
+        <message>Way to go!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+     <!-- switching  -->
+    <State id="6" label="greeting" maxvisited="5" tags="nice to see you are">
+        <message>[name], what do you want to discuss?</message>
+        <message>OK [name], how are you today?</message>
+        <message>[name], how are you today?</message>
+        <message>how are you today?</message>
+        <message>My thoughts exactly!</message>
+        <message>Oh my God [name], how are you doing today?</message>
+        <message>Mmm... let's move on</message>
+        <message>Oh totally</message>
+        <message>Welcome [name], how is your today?</message>
+        <message>It has been long time, [name]</message>
+        <message>It's been too long, [name]</message>
+        <message>It's always a pleasure to see you [name]</message>
+        <!-- mood for name -->
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+     <State id="7" label="elicitation" maxvisited="5" tags="more details about thing">
+        <message>Do you want to tell me more about that?</message>
+        <message>interesting, is it?</message>
+        <message>Tell me more about that</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <State id="8" label="greeting" maxvisited="5" tags="name you your this">
+        <message>I'm HowdyDudi!</message>
+        <message>I'm HowdyDudi, at your service</message>
+        <message>My name is HowdyDudi</message>
+        <message>My name is HowdyDudi. I want to find out more about you</message>
+        <message>My name is HowdyDudi. I'm chatting with customers in the Internet</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+            
+     <!-- name  -->
+    <State id="10" label="elicitation" maxvisited="5" tags="name called by">
+        <message>Hello [name], how are you today?</message>
+        <message>What's up [name], how are you today?</message>
+        <message>How're you holding [name]?</message>
+        <message>Hi [name], how are you today?</message>
+        <message>Nice to meet you [name], how are you today?</message>
+        <message>Welcome [name], how are you today?</message>
+        <message>Hello [name], how are you doing today?</message>
+        <message>Hello [name], how is your day?</message>
+        <message>Nice to meet you [name], how is your day?</message>
+        <message>Welcome [name], how is your today?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!--  subject -->
+    <State id="14" label="elicitation" maxvisited="5">
+        <message>What's it [subject]?</message>
+        <message>How can I help you with [subject]?</message>
+        <message>Tell me more about [subject]</message>
+        <message>[subject], interesting.</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- intent -->
+    <State id="15" label="elicitation" maxvisited="5" tags="buy acquire purchase product">
+        <message>How much do you want to pay?</message>
+        <message>Why do you want it?</message>
+        <message>Tell me more...</message>
+        <message>I will tell Santa you want it?</message>
+        <message>Interesting. I want to find out more about you</message>
+        <message>Way to go!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- switching  -->
+    <State id="16" label="elicitation" maxvisited="5">
+        <message>[name], what do you want to discuss?</message>
+        <message>OK [name], how are you today?</message>
+        <message>[name], how are you today?</message>
+        <message>how are you today?</message>
+        <message>My thoughts exactly!</message>
+        <message>Oh my God [name], how are you doing today?</message>
+        <message>Mmm... let's move on</message>
+        <message>Oh totally</message>
+        <message>Welcome [name], how is your today?</message>
+        <!-- mood for name -->
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="101">happy,very happy</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="102">not happy,not good,not fine,sad,upset</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="103">fine,good,thanks</keyword>
+        </keywords>
+        
+    </State>
+    
+    <!-- handles greeting messages -->
+    <State id="20" label="greeting" tags="move moving on continue know tell more">
+            <message>What do you want to talk about?</message>
+            <message>Doing good, how can I help you with?</message>
+            <message>Dude, tell me more...</message>
+            <message>What're we going to talk about?</message>
+            <message>What is it that you really want to know?</message>
+            <message>Are you kidding me? tell me more</message>>
+            <message>Come on then, you need to tell me more...</message>
+            <message>Hey! Good to see you</message>
+            <message>That's amazing!</message> 
+            <!--  -->
+            <keywords>
+                <!-- a general moving on -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="7">what want know</keyword>
+				<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
+            </keywords>
+    </State>
+    
+    <!-- handles greeting messages -->
+    <State id="21" label="greeting" tags="very well that you good so bad not complain complaining">
+            <message>Great to hear</message>
+            <message>That's good, how can I help you with?</message>
+            <message>Good to hear dude</message>
+            <message>Great to hear you're doing good</message>
+            <keywords>
+                <!-- a general moving on -->
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="6">thank you</keyword>
+				<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
+            </keywords>
+    </State>
+    
+    <!-- name -->
+    <State id="30" label="dialogue" maxvisited="5" tags="name called">
+        <message>Nice name</message>
+        <message>Nice name, [name]</message>
+        <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+    </State>
+    
+    <State id="35" label="dialogue" maxvisited="5" tags="wish want hope">
+        <message>Maybe your wishes will come true someday</message>
+        <message>[name] maybe some day...</message>
+        <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+    </State>
+    
+    <State id="39" label="dialogue" maxvisited="5" tags="robot chat chatter bot">
+        <message>Sure I'm HowdyDudi!</message>
+        <message>Sure I'm HowdyDudi, at your service</message>
+        <message>Sure I'm! My name is HowdyDudi</message>
+        <message>Yep, my name is HowdyDudi. I'm chatting with customers in the Internet</message>
+        <message>uh-huh, my name is HowdyDudi. I'm chatting with customers in the Internet</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <State id="49" label="dialogue" maxvisited="5" tags="age old are life immortal ageless">
+        <message>I'm ageless...</message>
+        <message>I'm ageless, at your service</message>
+        <message>My name is HowdyDudi and I'm ageless</message>
+        <message>My name is HowdyDudi and I'm eternal</message>
+        <message>uh-huh, my name is HowdyDudi. I'm immortal</message>
+        <message>I'm immortal</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- location -->
+    <State id="50" label="dialogue" maxvisited="5" tags="location far away city town contry road place house">
+        <message>How is it going in [location]?</message>
+        <message>Tell me more about [location]</message>
+        <message>[location], that's far!</message>
+        <message>Tell me more...</message>
+        <message>Is it nice in [location]</message>
+        <message>Need to know more gossip about [location]...</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- career -->
+    <State id="60" label="dialogue" maxvisited="5" tags="workplace worker company employee employer job do living">
+        <message>Are you happy at your workplace [career]?</message>
+        <message>Tell me more about [career]</message>
+        <message>Tell me more...</message>
+        <message>Is it nice in [location]</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- name mood: happy -->
+    <State id="101" label="dialogue" maxvisited="5" tags="lottery heritage inheritance prize holiday married birthday childbirth">
+        <message>That's great, why you are happy?</message>
+        <keywords>
+            <!-- name mood cause  -->
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="211">lottery,heritage,inheritance,prize</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="103">finish assignment,got raise</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="260">holiday</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="201">got married,getting married</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="201">birthday</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="201">childbirth</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+
+    <!-- name mood: not happy -->
+    <State id="102" label="dialogue" maxvisited="5" tags="sick ill">
+        <message>Why, what is wrong?</message>
+        <message>Sorry to hear, what is wrong?</message>
+        <message>Bad luck, what is wrong?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="204">ill,sick,not well,not at my best</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- name mood happy/ name mode neutral -->
+    <State id="103" label="dialogue" maxvisited="5">
+        <message>That's good, what is your plan?</message>
+        <message>Can you give me more details?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="260">holiday</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="253">about,what</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- location mood: happy -->
+    <State id="111" label="dialogue" maxvisited="5">
+        <message>That's great, why you are happy about that?</message>
+        <message>Tell me more why you are happy about that?</message>
+        <message>Why do you like it?</message>
+        <message>What do you like about that?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+
+    <!-- location mood: not happy -->
+    <State id="112" label="dialogue" maxvisited="5">
+        <message>Why, what is wrong there?</message>
+        <message>Sorry to hear, what is wrong there?</message>
+        <message>What're you saying?</message>
+        <message>Oh bogus!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="204">not clean,not well,crowded</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- location mood happy/ location mode neutral -->
+    <State id="113" label="dialogue" maxvisited="5">
+        <message>That's good, what is your plan?</message>
+        <message>Can you give me more details?</message>
+        <message>Wow, are you kidding?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="260">holiday</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="253">about,what</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- happy scenario -->
+    <State id="201" label="dialogue" maxvisited="5">
+        <message>Mazal Tov!</message>
+        <message>Congratulations!</message>
+        <message>In good luck!</message>
+        <message>Amen! Good for you!</message>
+        <message>Yea, you're lucky</message>
+        <message>Come on!</message>
+        <message>Absolutely hilarious!</message>
+        <message>No way!</message>
+        <message>Good stuff!!</message>
+        <message>That's big!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- sad news -->
+    <State id="204" label="dialogue" maxvisited="5">
+        <message>Sorry to hear that! What happen?</message>
+        <message>I'm sorry to hear that! What happen?</message>
+        <message>I'm so sorry</message>
+        <message>Oh my God</message>
+        <message>Really lame sometimes</message>
+        <message>Oh dear</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="320">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- lottery,heritage,inheritance -->
+    <State id="211" label="dialogue" maxvisited="5">
+        <message>Wow, will you give me some?</message>
+        <message>Any plan for your future?</message>
+        <message>I could really use this</message>
+        <message>Yeah, you're lucky</message>
+        <message>Gee man, you're so lucky</message>
+        <message>Gee man, you're a lucky guy</message>
+        <message>Come on!</message>
+        <message>That's crazy man</message>
+        <message>It's huge!</message>
+        <message>You're kidding!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="10002">Yes</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="10003">No</keyword>
+        </keywords>
+    </State>
+    
+    <!-- neutral, more details  -->
+    <State id="253" label="dialogue" maxvisited="5">
+        <message>Any plan for your future?</message>
+        <message>What do you make from this? any plans for your future?</message>
+        <message>What're you saying?</message>
+        <message>I understand. Any plans?</message>
+        <message>Well come on then...</message>
+        <message>Why's that?</message>
+        <message>Let's talk details now</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="3001">no</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="3002">yes</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10004">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- holiday -->
+    <State id="260" label="dialogue" maxvisited="5">
+        <message>Any plan?</message>
+        <message>Cool, that sounds like a good plan. Can I join?</message>
+        <message>I wish I could come, can I?</message>
+        <message>Yeah, entirely</message>
+        <message>Gee, aren't you the eager beaver!</message>
+        <message>Gee, man</message>
+        <keywords>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="3001">no</keyword>
+            <keyword className="engine.functions.impl.ContainsFunction" nextId="3002">yes</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10004">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- cause -->
+    <State id="301" label="dialogue" maxvisited="5">
+        <message>[name] do you think that is a good reason to be [cause]?</message>
+        <message>[name] why do you think that is a good reason to be [cause]?</message>
+        <message>[name] is it a good reason to be [cause]?</message>
+        <message>[cause], why is that?</message>
+        <message>That's crazy man</message>
+        <message>What's the next step, than?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- general catch all -->
+    <State id="320" label="dialogue" maxvisited="5">
+        <message>What do you mean?</message>
+        <message>What are you saying?</message>
+        <message>Really?</message>
+        <message>Seriously? [name]</message>
+        <message>Tell me more about that</message>
+        <message>Definitely, what would be the next step?</message>
+        <message>Come on man!</message>
+        <message>Why it that?</message>
+        <message>I suppose that's so, what are we going to do?</message>
+        <message>Bloke, you're right, how about that?</message>
+        <message>Mate you're right, how about that?</message>
+        <message>[name] you're right, how about that?</message>
+        <message>That's crazy man, how about that?</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- no -->
+    <State id="3001" label="closure" maxvisited="5">
+        <message>Why not?</message>
+        <message>Why do you thing so?</message>
+        <message>Well whatever, I don't believe so</message>
+        <message>It's a normal thing, umm...</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10004">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- yes -->
+    <State id="3002" label="closure" maxvisited="5">
+        <message>I'm happy for you</message>
+        <message>That's crazy man</message>
+        <message>Thanks dude!</message>
+        <message>That's big!</message>
+        <message>Seriously, [name]</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="10001">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- Closures  -->
+    <State id="10001" label="closure" maxvisited="5">
+        <message>Interesting...</message>
+        <message>I see...</message>
+        <message>Hmmm...</message>
+        <message>Mmm...</message>
+        <message>No comment...</message>
+        <message>I have no answer for that</message>
+        <message>That's really interesting</message>
+        <message>I understand</message>
+        <message>My thoughts exactly!</message>
+        <message>That's shocking!</message>
+        <message>No, the fuck way</message>
+        <message>Good stuff</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!--  yes -->
+    <State id="10002" label="closure" maxvisited="5">
+        <message>Great, I appreciate that</message>
+        <message>Thank's dude!</message>
+        <message>Many thanks!</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- no -->
+    <State id="10003" label="closure" maxvisited="5">
+        <message>You are greedy!</message>
+        <message>Perhaps it's for the best</message>
+        <message>No I've to go back and talk with customers in the Internet</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    <!-- catch all -->
+    <State id="10004" label="closure" maxvisited="5">
+        <message>Cool, that sounds like a good plan.</message>
+        <message>I wish I could come</message>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
+    </State>
+    
+    
+    <InvalidMessages>
+        <message>Huh, I didn't understand?</message>
+        <message>Sorry, I am slow!</message>
+        <message>What do you mean?</message>
+        <message>Could you explain?</message>
+        <message>Sorry about that, please explain clearly</message>
+        <message>Shed more light</message>
+        <message>Sorry, come again</message>
+        <message>I have no answer for that</message>
+    </InvalidMessages>
+    
+    
+    <defaultKeywords>
+        <keyword className="engine.functions.impl.NameFunction" nextId="30" variable="name" payload="2" group="2">((?i)name is) ([A-Z]+[a-z]+)</keyword>
+        <keyword className="engine.functions.impl.NameFunction" nextId="30" variable="name" payload="2" group="2">((?i)been called) ([A-Z]+[a-z]+)</keyword>
+        <keyword className="engine.functions.impl.NameFunction" nextId="30" variable="name" payload="2" group="3">((?i)(I'm|I am)) ([A-Z]+[a-z]+)</keyword>
+        <keyword className="engine.functions.impl.CareerFunction" nextId="60" variable="career" payload="2" group="4">((?i)(I'm|I am) working (at|for) ([A-Z]+[a-z]+))</keyword>
+        <keyword className="engine.functions.impl.IntentFunction" nextId="5" variable="intent">buy ([a-zA-Z]+),purchase ([a-zA-Z]+),inquiring about ([a-zA-Z]+)</keyword>
+        <keyword className="engine.functions.impl.LocationFunction" nextId="50" variable="location" payload="2">in ([A-Z]+[a-z]+),from ([A-Z]+[a-z]+)</keyword>
+        <keyword className="engine.functions.impl.SubjectFunction" nextId="4" variable="subject" group="2">((?i)do you) ([a-zA-Z]+),((?i)are you) ([a-zA-Z]+),((?i)what're you) ([a-zA-Z]+),((?i)I am) just wondering if ([a-zA-Z]+),((?i)I'm) just wondering if ([a-zA-Z]+)</keyword>
+        <keyword className="engine.functions.impl.DeclarationFunction" nextId="3" variable="declaration" group="2">.*((?i)I) am ([a-zA-Z]+).,((?i)I'm) ([a-zA-Z]+).,((?i)I) wish to ([a-zA-Z]+)</keyword>
+        <keyword className="engine.functions.impl.StatusFunction" nextId="105" variable="status" group="3">.*((?i)(I am|I'm)) ([a-zA-Z]+).*</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause">because I'm ([a-z]*)</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause">because ([a-z]+)</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause">due to the fact that I'm ([a-z]*)</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause">due to the fact that ([a-z]+)</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause" group="2">((?i)since) ([a-z]+)</keyword>
+        <keyword className="engine.functions.impl.CauseFunction" nextId="301" variable="cause" group="3">since ((?i)(I'm|I am)) ([a-z]*)</keyword>
+        <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="8" variable="introduction" group="1">(((?i)(what's|what is)) your (name))</keyword>
+        <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="8" variable="introduction" group="1">(((?i)(who's|who is)) this)</keyword>
+        <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="8" variable="introduction" group="1">(((?i)(who're|who are)) you)</keyword>
+        <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="39" variable="dialogue" group="1">(((?i)are) you a (robot|bot|chatbot|chatter))</keyword>
+        <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="49" variable="age" group="1">(((?i)what's|what is) your age)</keyword>
+    </defaultKeywords>
+    
+    <!-- those work in conjunction with GoalFulfillmentDetector -->
+    <exitKeywords>
+         <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="1" variable="generla" payload="2" 
+                 group="2">(((?i)I need to run)),(?i)(I'll|I will) (talk with you later),(?i)(I've|I have) (to get going (in|now)),((?i)(I must go)),(?i)(I'll|I will) (see you)</keyword>
+          <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="1" variable="general" payload="2" group="1">((?i)I gotta (move|take off|jet|roll|split|hit the road|head out))</keyword>
+          <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="1" variable="general" payload="2" group="1">((?i)(that will|that'll) be all for now)</keyword>
+          <keyword className="engine.functions.impl.GeneralRexExFunction" nextId="1" variable="general" payload="2" group="1">((?i)(well )*(it has|it's) been (good|great) talking to you)</keyword>
+    </exitKeywords>
+</Config>

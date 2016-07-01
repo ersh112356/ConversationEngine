@@ -1,0 +1,13 @@
+# The path to the Lucene classification (Mood).
+mood.index=../props/index/mood
+#
+# For the logger.
+logger.criticals=../props/logs/criticals
+logger.errors=../props/logs/errors
+logger.warnings=../props/logs/warnings
+logger.information=../props/logs/information
+logger.prefix=true
+#
+# Holds the path to Conversation Engine models and other stuff.
+engine.ttl=1800
+engine.en.path=../props/engine/data_en.xml
