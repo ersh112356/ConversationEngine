@@ -41,6 +41,7 @@ General guidelines:
 Future efforts:
 1. To allow more feasibility and avoiding exhaustion of the inner ready to use replies, dynamic functions can be provided. For instance, News function can take a hot news topic to enrich the conversation with an up-to-date topic.
 2. Yet to be implemented, a news feed that will provide a fresh and updated view of what’s going on at the human world domain to the conversation.
+3. Implemented. Adding an action that can, optionally be invoked in parallel to responding to human text. For instance, "I want to buy a car". Action: invoke a Goole search and push options to bay a car.
 
 Minimum requirement:
 - Java8 and above (mandatory)
