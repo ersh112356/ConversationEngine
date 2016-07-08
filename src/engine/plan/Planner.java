@@ -38,6 +38,13 @@ public interface Planner extends Language{
     public String getCurrentLevel();
     
     /**
+     * Report back on the optional tied action String.
+     * 
+     * @return the optional tied action String.
+     */
+    public String getOptionalAction();
+    
+    /**
      * Starts the process of fetching a reply for the given text.
      * 
      * @param message- the given text to match to.
