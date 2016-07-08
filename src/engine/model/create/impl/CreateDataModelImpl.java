@@ -168,6 +168,7 @@ public class CreateDataModelImpl implements Creator{
             String label = el.getAttribute("label");
             String mvisited = el.getAttribute("maxvisited");
             String tags = el.getAttribute("tags");
+            String action = el.getAttribute("action");
             
             // Get all state messages.
             List messages = new ArrayList();
@@ -191,6 +192,11 @@ public class CreateDataModelImpl implements Creator{
             // Construct a new ConversationState object.
             ConversationState state = new ConversationState(id,label,messages,keywords);
             state.setTags(tags);
+            
+            if(action!=null && !action.isEmpty())
+            {
+                state.setAction(action);
+            }
             
             if(mvisited!=null && !mvisited.isEmpty())
             {
