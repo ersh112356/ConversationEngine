@@ -51,6 +51,8 @@ public class ConversationPlannerImpl extends LanguageImpl implements Verbose, Pl
     protected ReplyCleaner cleaner;
     /** Holds the current level (the state ID). */
     protected String level;
+    /** Holds the optional action (AKA: should be any action tied to the state) */
+    protected String action;
     
     /**
      * The constructor.
@@ -140,6 +142,17 @@ public class ConversationPlannerImpl extends LanguageImpl implements Verbose, Pl
     }
     
     /**
+     * Report back on the optional tied action String.
+     * 
+     * @return the optional tied action String.
+     */
+    @Override
+    public String getOptionalAction(){
+        
+        return action;
+    }
+    
+    /**
      * Starts the process of fetching a reply for the given text.
      * 
      * @param message- the given text to match to.
@@ -210,6 +223,7 @@ public class ConversationPlannerImpl extends LanguageImpl implements Verbose, Pl
         }
         
         level = next.getId();
+        action = next.getAction();
         
         // Makes room for dynamic Functions.
         String textResponse = response.getResponse();
