@@ -8,6 +8,7 @@ import engine.plan.Planner;
 import inject.Injector;
 import java.util.HashMap;
 import java.util.Map;
+import utils.Callback;
 import utils.Preferences;
 
 /**
@@ -165,8 +166,22 @@ public class ConversationEngine extends LanguageImpl implements Injector<Planner
      * 
      * @return a reply.
      */
-    public String getReply(String message, String level){
- 
+    public String getReply(String message, String level){        
+        
+        return getReply(message,level,null);
+    }
+    
+    /**
+     * Send user message to the bot and get the response.
+     * 
+     * @param message- the text to reply to.
+     * @param level- use this entry level to start searching for a reply. If this is taken from the above, it's the last ConversationState ID.
+     * @param callback- an optional callback to execute the optional action, if found.
+     * 
+     * @return a reply.
+     */
+    public String getReply(String message, String level, Callback<String> callback){
+        
         ConversationState state = model.getState(level);
         
         // 1. Fetches the reply.
@@ -175,6 +190,12 @@ public class ConversationEngine extends LanguageImpl implements Injector<Planner
         // 2. Fetches the new state ID.
         //    That's used to control the flow when no level parameter is provided (which is the default here).
         this.level = planner.getCurrentLevel();
+        String action = planner.getOptionalAction();
+        
+        if(action!=null && callback!=null)
+        {
+            callback.run(action);
+        }
         
         return response;
     }
