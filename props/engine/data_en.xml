@@ -117,7 +117,7 @@
         <keywords>
             <keyword className="engine.functions.impl.ContainsFunction" nextId="20">not much,nothing to tell about,not really to tell about</keyword>
             <keyword className="engine.functions.impl.ContainsFunction" nextId="20">me too,myself too</keyword>
-			<keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
         </keywords>
     </State>
     
@@ -263,8 +263,8 @@
             <!--  -->
             <keywords>
                 <!-- a general moving on -->
-                <keyword className="engine.functions.impl.ContainsFunction" nextId="7">what want know</keyword>
-				<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
+                <keyword className="engine.functions.impl.ContainsFunction" nextId="7">what you want to know</keyword>
+		<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
             </keywords>
     </State>
     
@@ -277,7 +277,7 @@
             <keywords>
                 <!-- a general moving on -->
                 <keyword className="engine.functions.impl.ContainsFunction" nextId="6">thank you</keyword>
-				<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
+		<keyword className="engine.functions.impl.CatchAllFunction" nextId="2">*</keyword>
             </keywords>
     </State>
     
@@ -285,13 +285,17 @@
     <State id="30" label="dialogue" maxvisited="5" tags="name called">
         <message>Nice name</message>
         <message>Nice name, [name]</message>
-        <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
     </State>
     
     <State id="35" label="dialogue" maxvisited="5" tags="wish want hope">
         <message>Maybe your wishes will come true someday</message>
         <message>[name] maybe some day...</message>
-        <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        <keywords>
+            <keyword className="engine.functions.impl.CatchAllFunction" nextId="1">*</keyword>
+        </keywords>
     </State>
     
     <State id="39" label="dialogue" maxvisited="5" tags="robot chat chatter bot">
@@ -318,7 +322,7 @@
     </State>
     
     <!-- location -->
-    <State id="50" label="dialogue" maxvisited="5" tags="location far away city town contry road place house">
+    <State id="50" label="dialogue" maxvisited="5" tags="location far away city town country road place house">
         <message>How is it going in [location]?</message>
         <message>Tell me more about [location]</message>
         <message>[location], that's far!</message>
