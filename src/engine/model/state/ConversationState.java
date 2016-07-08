@@ -13,6 +13,8 @@ public class ConversationState{
 
     /** Holds the ID of this state object. */
     protected String id = "";
+    /** Holds the optional action that might be tied to this state object. */
+    protected String action = null;
     /** Holds the embeddedReplies that are tied to this state object. */
     protected List<String> embeddedReplies;
     /** Holds the keywords that are tied to this state. */
@@ -126,6 +128,26 @@ public class ConversationState{
     public String getId(){
         
         return id;
+    }
+    
+    /**
+     * Introduces a new action here. 
+     * 
+     * @param action- the new action.
+     */
+    public void setAction(String action){
+        
+        this.action = action;
+    }
+    
+    /**
+     * Get the optional action that might be tied to this state object.
+     * 
+     * @return the optional action that might be tied to this state object. Null if not present.
+     */
+    public String getAction(){
+        
+        return action;
     }
 
     /**
