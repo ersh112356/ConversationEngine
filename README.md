@@ -88,3 +88,5 @@ Where:
 "../props/engine/data_en.xml" is the path to the XML file that controls the flow (a toy one is provided).
 
 If you’re using the default injection, you need to put inside the properties file the path to the Lucene index files (toy classification files are provided, please make sure to train your own for best results).
+
+A full version of this can be found here: https://www.linkedin.com/pulse/conversationengine-eran-shaham?trk=pulse_spock-articles
