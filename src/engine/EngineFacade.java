@@ -31,24 +31,26 @@ public class EngineFacade{
         LoggerManager.logInformation("start to load engine model files.");
         
         String enpath = Preferences.get(EngineConsts.KEY_ENGINE_MODEL_ENGLISH,"../props/engine/data_en.xml");
-        //String hepath = Preferences.get(EngineConsts.KEY_ENGINE_MODEL_HEBREW,"../props/engine/data_he.xml");
+        String hepath = Preferences.get(EngineConsts.KEY_ENGINE_MODEL_HEBREW,"../props/engine/data_he.xml");
         
         // Use your own Creator, if default doesn't meet your goals.
-        String creatorName = Preferences.get(EngineConsts.KEY_CLASSNAME_DATA_MODEL_CREATOR,"engine.model.impl.CreateDataModelImpl");
+        String creatorName = Preferences.get(EngineConsts.KEY_CLASSNAME_DATA_MODEL_CREATOR,"engine.model.create.impl.CreateDataModelImpl");
         
         // We're going to use the Injector to inject the proper Creator into this static piece of code.
         Injector<Creator> injector = new InjectorImpl();
         
+        //CreateDataModelImpl encreator = new CreateDataModelImpl();
         Creator encreator = injector.inject(creatorName);
         encreator.create(enpath);
         Model endm = encreator.getDataModel();
         
-        //Creator hecreator = injector.inject(creatorName);
-        //hecreator.create(hepath);
-        //Model hedm = hecreator.getDataModel();
+        //CreateDataModelImpl hecreator = new CreateDataModelImpl(hepath);
+        Creator hecreator = injector.inject(creatorName);
+        hecreator.create(hepath);
+        Model hedm = hecreator.getDataModel();
         
         models.put(EngineConsts.KEY_ENGLISH,endm);
-        //models.put(EngineConsts.KEY_HEBREW,hedm);
+        models.put(EngineConsts.KEY_HEBREW,hedm);
         
         LoggerManager.logInformation("Engine model files are loaded.");
         
